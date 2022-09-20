@@ -11,10 +11,6 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MoneyTransferTest {
-    @AfterEach
-    void tearDown() {
-        closeWindow();
-    }
 
     @Test
     @DisplayName("Should transfer money to first card from second card")
