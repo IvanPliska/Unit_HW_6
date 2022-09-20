@@ -75,26 +75,26 @@ class MoneyTransferTest {
         assertEquals(expectedFirstCardBalance, actualFirstCardBalance);
         assertEquals(expectedSecondCardBalance, actualSecondCardBalance);
     }
-
-
-    @Test
-    @DisplayName("Should not transfer money to first card if on second card insufficient sum")
-    void shouldNotTransferMoneyToFirstCardFromSecondInsufficientSum() {
-        var loginPage = open("http://localhost:9999", LoginPage.class);
-        var authInfo = DataHelper.getAuthInfo();
-        var verificationPage = loginPage.validLogin(authInfo);
-        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
-        var dashboardPage = verificationPage.validVerify(verificationCode);
-
-        var firstCardData = DataHelper.getFirstCardData();
-        var secondCardData = DataHelper.getSecondCardData();
-
-        var secondCardBalance = dashboardPage.getCardBalance(secondCardData);
-
-        var sum = DataHelper.generateInvalidSum(secondCardBalance);
-
-        var transferPage = dashboardPage.getTransferPage(firstCardData);
-        transferPage.topUpCard(String.valueOf(sum), secondCardData);
-        transferPage.errorWithInsufficientSum("Ошибка! Недостаточно средств на карте!");
-    }
 }
+
+//    @Test
+//    @DisplayName("Should not transfer money to first card if on second card insufficient sum")
+//    void shouldNotTransferMoneyToFirstCardFromSecondInsufficientSum() {
+//        var loginPage = open("http://localhost:9999", LoginPage.class);
+//        var authInfo = DataHelper.getAuthInfo();
+//        var verificationPage = loginPage.validLogin(authInfo);
+//        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+//        var dashboardPage = verificationPage.validVerify(verificationCode);
+//
+//        var firstCardData = DataHelper.getFirstCardData();
+//        var secondCardData = DataHelper.getSecondCardData();
+//
+//        var secondCardBalance = dashboardPage.getCardBalance(secondCardData);
+//
+//        var sum = DataHelper.generateInvalidSum(secondCardBalance);
+//
+//        var transferPage = dashboardPage.getTransferPage(firstCardData);
+//        transferPage.topUpCard(String.valueOf(sum), secondCardData);
+//        transferPage.errorWithInsufficientSum("Ошибка! Недостаточно средств на карте!");
+//    }
+//}
